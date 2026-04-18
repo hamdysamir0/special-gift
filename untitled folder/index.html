@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To the most beautiful doctor ♥️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+}
+
+#resultContainer {
+    display: none; 
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.jannah-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #ff9a9e;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+h1 { margin: 15px 0; font-size: 22px; color: #444; }
+.result-text { font-size: 28px; color: #ff4081; font-weight: bold; }
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#yes { background: #28a745; color: white; }
+#no { background: #dc3545; color: white; position: relative; }
+
+.signature {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.signature b { color: #777; border-bottom: 1px solid #ff9a9e; }
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 3s linear infinite;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(-300px) rotate(360deg); opacity:0; }
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="container" id="questionContainer">
+        <h1>Do you know who the most beautiful doctor is? ♥️</h1>
+        <div class="button-group">
+            <button id="yes">Yes 😍</button>
+            <button id="no">No 😢</button>
+        </div>
+        <div class="signature">Designed by <b>Hamdy Samir</b></div>
+    </div>
+
+    <div class="container" id="resultContainer">
+        <img src="WhatsApp Image 2026-04-18 at 14.26.36.jpeg" alt="Beautiful Jannah" class="jannah-img" onerror="this.src='https://via.placeholder.com/220?text=Image+Not+Found'">
+        <div class="result-text">It's You Jannah ♥️😍</div>
+        <div class="signature">Designed by <b>Hamdy Samir</b></div>
+    </div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const qC = document.getElementById("questionContainer");
+const rC = document.getElementById("resultContainer");
+
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.position = "fixed";
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+});
+
+yesBtn.onclick = () => {
+    qC.style.display = "none";
+    rC.style.display = "block";
+    for(let i=0; i<50; i++){
+        setTimeout(() => {
+            let h = document.createElement("div");
+            h.className = "heart";
+            h.innerHTML = "❤️";
+            h.style.left = Math.random() * window.innerWidth + "px";
+            h.style.top = window.innerHeight + "px";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 3000);
+        }, i * 100);
+    }
+};
+</script>
+
+</body>
+</html>
